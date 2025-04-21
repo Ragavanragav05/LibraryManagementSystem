@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <style>
+        body{
+            background-color:darkgrey;
+        }
+        #container{
+            background-color:antiquewhite;
+            width: 300px;
+            height: 400px; 
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -110px; 
+            margin-left: -150px;
+        }
+        form{
+            padding-left:50px;
+        }
+        label{
+            height:10px;
+            margin-bottom: 20px;
+        }
+        input{
+            margin-top:10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1><center>Login Form</center></h1>
+        <form>
+            <div>
+                <label for="uname">username</label><br>
+                <input type="text" name="uname" id = "uname" maxlength = "50" placeholder="email or username"><br>
+            </div>
+            <div>
+                <label for="pwd">password</label><br>
+                <input type="password" name="password" id="pwd" maxlength="50" placeholder="password"><br>
+            </div>
+            <div>
+                <input type="submit" value="login">
+            </div>
+            <div>
+                <p>Do not have account?<a href="#">signUp</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
