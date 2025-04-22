@@ -57,7 +57,51 @@
         margin-right:40px;
         margin-bottom:40px;
        }
-
+       body {
+        background-image: url("images/background_1920x1080.jpg");
+        background-size: cover;            /* Ensures the image covers the entire area */
+        background-repeat: no-repeat;      /* Prevents tiling */
+        background-position: center center;/* Centers the image */
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden;                 /* Prevents scrolling caused by overflowing content */
+    
+        /* Animation effect */
+        opacity: 0;
+        transform: scale(1.05);
+        transition: all 1s ease;
+    }
+    
+    body.bg-show {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+    #container-form {
+        background-color: aliceblue;
+        width: 400px;
+        height: 450px; 
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        margin-top: -110px; 
+        margin-left: -150px;
+        border-radius: 10px;
+        
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.6s ease;
+    }
+    
+    #container-form.slide-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .submit:hover{
+        background-color:beige;
+        box-shadow: 0px 0px 0px 3px red;
+    }
     </style>
 </head>
 <body>
@@ -93,10 +137,21 @@
                     <span id="address"></span>
                 </div>
                 <div id="submit">
-                    <input type="submit" value="Register">
+                    <input type="submit"  class="submit" value="Register">
                 </div>
             </form>
         </div>
         </div>
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                const container = document.getElementById('container-form');
+                const body = document.body;
+        
+                setTimeout(() => {
+                    body.classList.add('bg-show');         // Background fade/scale
+                    container.classList.add('slide-in');   // Form slide-in
+                }, 100); // Delay to ensure both animate nicely
+            });
+        </script>
 </body>
 </html>
