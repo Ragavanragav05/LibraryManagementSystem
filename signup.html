@@ -110,7 +110,7 @@
             <div id="heading">
                 <h2>Registration form</h2>
             </div>
-            <form action="/signup" method="POST">
+            <form method="POST" onclick="check()">
                 <div id="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="enter name" size="35"><br>
@@ -137,7 +137,7 @@
                     <span id="address"></span>
                 </div>
                 <div id="submit">
-                    <input type="submit"  class="submit" value="Register">
+                    <input type="submit"  class="submit" value="Register" onclick="check()">
                 </div>
             </form>
         </div>
@@ -152,6 +152,16 @@
                     container.classList.add('slide-in');   // Form slide-in
                 }, 100); // Delay to ensure both animate nicely
             });
+        </script>
+        <script>
+            function check(){
+                var value =  document.getElementsByName('name');
+                console.log(value);
+                if(value==""){
+                    var id = document.getElementById('username');
+                    id.innerText="Please enter the name";
+                }
+            }
         </script>
 </body>
 </html>
