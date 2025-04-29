@@ -58,7 +58,7 @@
         margin-bottom:40px;
        }
        body {
-        background-image: url("images/background_1920x1080.jpg");
+        background-image: url("static/background_1920x1080.jpg");
         background-size: cover;            /* Ensures the image covers the entire area */
         background-repeat: no-repeat;      /* Prevents tiling */
         background-position: center center;/* Centers the image */
@@ -114,7 +114,7 @@
                 <div id="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="enter name" size="35"><br>
-                    <span id="username"></span>
+                    <span id="error" style="color:red;">{{ error }}</span>
                 </div>
                 <div id="form-group">
                     <label for="e-mail">Email</label>
@@ -130,11 +130,6 @@
                     <label for="phnno">Mobile No</label>
                     <input type="number" id="phnno" name="mobileno" placeholder="mobilenumber" size="25" minlength="10"><br>
                     <span id="mobno"></span>
-                </div>
-                <div id="form-group">
-                    
-                    <label id="add">Address<textarea placeholder="Enter your address" rows="3" cols="10" id="addr" name="address"></textarea></label><br>
-                    <span id="address"></span>
                 </div>
                 <div id="submit">
                     <input type="submit"  class="submit" value="Register" onclick="check()">
