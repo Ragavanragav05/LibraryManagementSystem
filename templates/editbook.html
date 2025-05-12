@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Book</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url("../static/edit.jpg");
+      margin: 0;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(100px);
+      transition: all 0.8s ease-in-out;
+    }
+
+    .container.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    input {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 600px) {
+      input, button {
+        font-size: 15px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="editForm">
+    <h1>Edit Book</h1>
+    <form method="POST" action="/update_book/{{ book[0] }}">
+      <input type="text" name="title" value="{{ book[1] }}" placeholder="Title" required />
+      <input type="text" name="author" value="{{ book[2] }}" placeholder="Author" required />
+      <input type="text" name="genre" value="{{ book[3] }}" placeholder="Genre" />
+      <input type="number" name="year" value="{{ book[4] }}" placeholder="Publish Year" />
+      <input type="number" name="quantity" value="{{ book[5] }}" placeholder="Quantity" />
+      <input type="text" name="description" value="{{ book[6] }}" placeholder="Description" />
+      <input type="text" name="publisher" value="{{ book[7] }}" placeholder="Publisher" />
+      <button type="submit">Update Book</button>
+    </form>
+  </div>
+
+  <script>
+    // Slide in when page loads
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('editForm').classList.add('show');
+    });
+  </script>
+
+</body>
+</html>

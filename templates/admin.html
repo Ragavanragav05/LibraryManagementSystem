@@ -16,6 +16,7 @@
       display: flex;
       min-height: 100vh;
       background: #f0f2f5;
+      background-image: url("../static/background_1920x1080.jpg");
     }
 
     /* Sidebar */
@@ -81,7 +82,7 @@
 
     .card {
       background: white;
-      padding: 30px;
+      padding: 40px;
       border-radius: 12px;
       box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
       transition: transform 0.3s, box-shadow 0.3s;
@@ -141,8 +142,8 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <h2>📚 Library</h2>
-    <a href="#">Dashboard</a>
-    <a href="#">Manage Books</a>
+    <a href="admin.html">Dashboard</a>
+    <a href="manage.html">Manage Books</a>
     <a href="#">Manage Members</a>
     <a href="#">Issue/Return</a>
     <a href="#">Reports</a>
@@ -172,6 +173,14 @@
       <div class="card">
         <h2>Pending Returns</h2>
         <p>{{book_pending}}</p>
+      </div>
+      <div class="card">
+        <h2>New Registration Today</h2>
+        <p>{{new_registration}}</p>
+      </div>
+      <div class="card">
+        <h2>Recently Added Books</h2>
+        <p>{{recent_books}}</p>
       </div>
     </div>
 

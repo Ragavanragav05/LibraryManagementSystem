@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Books</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      margin-bottom: 30px;
+    }
+
+    .form-container h3 {
+      margin-bottom: 15px;
+      font-size: 20px;
+      color: #444;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .form-grid input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    .form-container button {
+      margin-top: 15px;
+      background: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .form-container button:hover {
+      background: #218838;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      background: white;
+      border-collapse: collapse;
+      min-width: 900px;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f7f7f7;
+    }
+
+    .btn-edit,
+    .btn-delete {
+      padding: 6px 12px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 5px;
+    }
+
+    .btn-edit {
+      background-color: #007bff;
+      margin-right: 5px;
+    }
+
+    .btn-delete {
+      background-color: #dc3545;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 24px;
+      }
+
+      .form-container h3 {
+        font-size: 18px;
+      }
+
+      .form-container button {
+        width: 100%;
+      }
+
+      .btn-edit,
+      .btn-delete {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Manage Books</h1>
+
+  <div class="form-container">
+    <h3>Add New Book</h3>
+    <form method="post">
+      <div class="form-grid">
+        <input type="text" name="title" placeholder="Book Title" required />
+        <input type="text" name="author" placeholder="Author" required />
+        <input type="text" name="genre" placeholder="Genre" />
+        <input type="number" name="year" placeholder="Publish Year" />
+        <input type="number" name="quantity" placeholder="Quantity" />
+        <input type="text" name="description" placeholder="Description" />
+        <input type="text" name="publisher" placeholder="Publisher" />
+      </div>
+      <button type="submit">Add Book</button>
+    </form>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Genre</th>
+          <th>Publish Year</th>
+          <th>Quantity</th>
+          <th>Available</th>
+          <th>Description</th>
+          <th>Publisher</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for book in books %}
+        <tr>
+          <td>{{ book[0] }}</td>
+          <td>{{ book[1] }}</td>
+          <td>{{ book[2] }}</td>
+          <td>{{ book[3] }}</td>
+          <td>{{ book[4] }}</td>
+          <td>{{ book[5] }}</td>
+          <td>{{ book[6] }}</td>
+          <td>{{ book[7] }}</td>
+          <td>{{ book[8] }}</td>
+          <td>
+            <a href="{{ url_for('editbook', book_id=book[0]) }}" class="btn-edit">Edit</a>
+            <button class="btn-delete">Delete</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
